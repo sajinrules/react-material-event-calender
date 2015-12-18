@@ -1,0 +1,33 @@
+{
+  "name": "material-calender",
+  "version": "1.0.0",
+  "description": "Material Event Calender",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "material",
+    "events",
+    "calender"
+  ],
+  "author": "sajinrules@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "material-ui": "^0.13.4",
+    "react": "^0.14.3",
+    "react-data-calendar": "^0.1.0",
+    "react-dom": "^0.14.3",
+    "react-tap-event-plugin": "^0.2.1"
+  },
+  "devDependencies": {
+    "browserify": "^12.0.1",
+    "connect": "^3.4.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-server-livereload": "^1.5.4",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.6.1"
+  }
+}
