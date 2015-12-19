@@ -1,0 +1,10 @@
+.week{
+	text-align: center;
+	display: block;
+	padding: 5px;
+	background-color: #eee;
+	border-left: 1px solid #ddd;
+}
+.day{
+	height: 100px;
+}

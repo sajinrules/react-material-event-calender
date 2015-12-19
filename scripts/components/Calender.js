@@ -45,7 +45,7 @@ var Calendar = React.createClass({
 		return (
 			<div>
 				<Header month={this.state.currMonth} year={this.state.currYear} onPrevMonth={this.prevMonth} onNextMonth={this.nextMonth}/>
-				<Month/>
+				<Month month={this.state.currMonth} year={this.state.currYear}/>
 			</div>
 			
 		);

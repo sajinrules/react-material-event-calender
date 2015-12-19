@@ -1,6 +1,6 @@
 var React = require("react");
-const GridList = require('material-ui/lib/grid-list/grid-list');
-const GridTile = require('material-ui/lib/grid-list/grid-tile');
+var moment = require("moment");
+var Day = require('./Day');
 /*var Header = require("./Header");
 var Grid = require("./Grid");*/
 
@@ -42,31 +42,58 @@ var Month = React.createClass({
 
 	render: function() {
 		var data = this.props.data || {};
-		var col= {float:'left',width: '14%'};
+		//console.log("this.props:",this.props);
+		var col= {float:'left',width: '13%',textAlign:'left',display: 'block',padding:'5px',borderBottom:'1px solid #ddd',borderLeft:'1px solid #ddd'};
 		var week =['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',]
-		var header= {padding:'5px',display:'block',backgroundColor:'#eee',height:'25px',textAlign:'center'}
+		var startOfMonth = moment().month(this.props.month).year(this.props.year).startOf('month');
+		var endOfMonth = moment().month(this.props.month).year(this.props.year).endOf('month');
+		var startDay = startOfMonth.day()
+		//console.log("startDay:",startDay);
+		var days = [];
+		var day = startOfMonth;
+		var j=0;
+		while (day <= endOfMonth) {
+		    days.push(day.toDate());
+		    day = day.clone().add(1, 'd');
+		}
+		while(j<startDay){
+			days.unshift("");
+			j++;
+		}
+		/*createDay = function(day){
+			console.log("day:",day);
+		}*/
+		console.log(days);
 		return (
-			<div>
+			<div style={{margin:'0px auto'}}>
 				<div>
 				{
 					week.map(function(item,i){
 						return(
-							<div style={col} key={i}>{item}</div>
+							<div className="week" style={col} key={i}>{item}</div>
 						)
 					})
 				}
 				</div>
 				<div>
-					<div style={col}>1</div>
-					<div style={col}>2</div>
-					
-					<div style={col}>3</div>
-					<div style={col}>4</div>
-					
-					<div style={col}>5</div>
-					<div style={col}>6</div>
-					
-					<div style={col}>7</div>
+					{
+						days.map(function(day,i){
+							return(
+								<Day day={day} index={i} key={i} startDay={startDay}></Day>
+							)
+						})
+					}
+					{/*<div style={col} className="day">1</div>
+										<div style={col} className="day">2</div>
+										
+										<div style={col} className="day">3</div>
+										<div style={col} className="day">4</div>
+										
+										<div style={col} className="day">5</div>
+										<div style={col} className="day">6</div>
+										
+										<div style={col} className="day">7</div>
+										<div style={col} className="day">8</div>*/}
 				</div>
 				
 			</div>

@@ -19,13 +19,13 @@ gulp.task('copy',function(){
 	gulp.src('./index.html')
 		.pipe(gulp.dest('build'));
 	gulp.src('css/**/*.*')
-		.pipe(gulp.dest('build'));
+		.pipe(gulp.dest('build/css'));
 	// gulp.src('eventdata/**/*.*')
 	// 	.pipe(gulp.dest('build/eventdata'));    
 });
 
 gulp.task('watch', function() {
-	gulp.watch(['scripts/**/*.*','index.html'], ['browserify','copy']);
+	gulp.watch(['scripts/**/*.*','css/**/*.*','index.html'], ['browserify','copy']);
 });
 
 gulp.task('webserver', function() {
