@@ -20,8 +20,8 @@ gulp.task('copy',function(){
 		.pipe(gulp.dest('build'));
 	gulp.src('css/**/*.*')
 		.pipe(gulp.dest('build/css'));
-	// gulp.src('eventdata/**/*.*')
-	// 	.pipe(gulp.dest('build/eventdata'));    
+	gulp.src('eventdata/**/*.*')
+		.pipe(gulp.dest('build/eventdata'));    
 });
 
 gulp.task('watch', function() {

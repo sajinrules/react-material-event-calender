@@ -41,8 +41,10 @@ var Month = React.createClass({
 	},
 
 	render: function() {
-		var data = this.props.data || {};
+		var data = this.props.events || [];
 		//console.log("this.props:",this.props);
+		var currMonth = this.props.month;
+		var currYear = this.props.year
 		var col= {float:'left',width: '13%',textAlign:'left',display: 'block',padding:'5px',borderBottom:'1px solid #ddd',borderLeft:'1px solid #ddd'};
 		var week =['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',]
 		var startOfMonth = moment().month(this.props.month).year(this.props.year).startOf('month');
@@ -60,10 +62,22 @@ var Month = React.createClass({
 			days.unshift("");
 			j++;
 		}
+		//console.log("data:",data);
+		var events = data.filter(function(item){
+			//console.log("item:",item.start);
+			var date = moment(item.start);
+			//console.log("date:",date);
+			var month = date.month();
+			//console.log("this.props.month:",this.props);
+			var year = date.year();
+			//console.log("year:",year);
+			return currMonth===month && currYear===year
+		})
+		//console.log("datas:",data);
 		/*createDay = function(day){
 			console.log("day:",day);
 		}*/
-		console.log(days);
+		//console.log(days);
 		return (
 			<div style={{margin:'0px auto'}}>
 				<div>
@@ -79,7 +93,7 @@ var Month = React.createClass({
 					{
 						days.map(function(day,i){
 							return(
-								<Day day={day} index={i} key={i} startDay={startDay}></Day>
+								<Day day={day} data={events} index={i} key={i} startDay={startDay}></Day>
 							)
 						})
 					}

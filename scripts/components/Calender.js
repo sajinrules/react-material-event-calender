@@ -18,10 +18,22 @@ var Calendar = React.createClass({
 	getInitialState: function() {
 		return {
 			currMonth: (new Date()).getMonth(),
-			currYear: (new Date()).getFullYear() 
+			currYear: (new Date()).getFullYear(),
+			events :[]
 		};
 	},
-
+	componentWillMount:function(){
+		//console.log("this:",this.setState);
+		var that = this;
+		$.ajax({
+			url: "eventdata/mediumEvent.json",
+			success: function (data) {
+				//console.log("data:",data);
+				that.setState({events:data})
+				//var obj = JSON.parse(data);
+			}
+		});
+	},
 	prevMonth: function(event) {
 		var month = this.state.currMonth;
 		var year = this.state.currYear;
@@ -45,7 +57,7 @@ var Calendar = React.createClass({
 		return (
 			<div>
 				<Header month={this.state.currMonth} year={this.state.currYear} onPrevMonth={this.prevMonth} onNextMonth={this.nextMonth}/>
-				<Month month={this.state.currMonth} year={this.state.currYear}/>
+				<Month month={this.state.currMonth} year={this.state.currYear} events={this.state.events}/>
 			</div>
 			
 		);
