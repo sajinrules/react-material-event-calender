@@ -12,7 +12,11 @@ const IconButton = require('material-ui/lib/icon-button');
 const Previous = require('material-ui/lib/svg-icons/navigation/arrow-back.js')
 const Forward = require('material-ui/lib/svg-icons/navigation/arrow-forward.js')
 const DateRange = require('material-ui/lib/svg-icons/action/date-range.js')
+
 var Header = React.createClass({
+	select: function(selection){
+		this.props.option(selection)
+	},
 	render: function() {
 		var data = this.props.data || {};
 		var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -29,8 +33,12 @@ var Header = React.createClass({
 					<IconButton  touch={true} >
 						<DateRange/>
 					</IconButton>
+
 					<ToolbarTitle text={month+" "+ this.props.year} ></ToolbarTitle>
+
 					<ToolbarGroup key={1} float="right">
+						<RaisedButton label="Month" onClick={this.select.bind(this,'month')} primary={true} />
+	    				<RaisedButton label="Day" onClick={this.select.bind(this,'day')} primary={true} />
 						<IconButton  touch={true} onClick={this.props.onNextMonth}>
 							<Forward/>
 						</IconButton>

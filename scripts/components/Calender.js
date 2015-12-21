@@ -1,36 +1,26 @@
 var React = require("react");
 var Header = require('./Header');
 var Month = require('./Month');
-/*var Header = require("./Header");
-var Grid = require("./Grid");*/
+var Daily = require('./Daily')
 
-/**
- * @class
- * 
- * Main Calendar class. Builds the Calendar component
- * using sub Header and Grid components. Default state
- * is an empty calendar with no items.
- * 
- * @prop data (optional) Calendar items to be displayed for specific dates. 
- *       				 See docs for expected data structure.
- */
 var Calendar = React.createClass({
 	getInitialState: function() {
 		return {
 			currMonth: (new Date()).getMonth(),
 			currYear: (new Date()).getFullYear(),
-			events :[]
+			events :[],
+			option : 'month'
 		};
 	},
+	select : function(selected){
+		this.setState({option:selected});
+	},
 	componentWillMount:function(){
-		//console.log("this:",this.setState);
 		var that = this;
 		$.ajax({
 			url: "eventdata/mediumEvent.json",
 			success: function (data) {
-				//console.log("data:",data);
 				that.setState({events:data})
-				//var obj = JSON.parse(data);
 			}
 		});
 	},
@@ -56,8 +46,10 @@ var Calendar = React.createClass({
 		var data = this.props.data || {};
 		return (
 			<div>
-				<Header month={this.state.currMonth} year={this.state.currYear} onPrevMonth={this.prevMonth} onNextMonth={this.nextMonth}/>
-				<Month month={this.state.currMonth} year={this.state.currYear} events={this.state.events}/>
+				<Header month={this.state.currMonth} year={this.state.currYear} onPrevMonth={this.prevMonth} onNextMonth={this.nextMonth} option={this.select}/>
+				{
+					(this.state.option==='month') ? <Month month={this.state.currMonth} year={this.state.currYear} events={this.state.events}/> : <Daily events={this.state.events} month={this.state.currMonth} year={this.state.currYear} />
+				}	
 			</div>
 			
 		);
