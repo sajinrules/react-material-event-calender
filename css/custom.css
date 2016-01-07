@@ -6,5 +6,19 @@
 	border-left: 1px solid #ddd;
 }
 .day{
-	height: 100px;
+	height: 150px;
+}
+
+li{
+	list-style: none;
+	padding: 5px 15px !important;
+	background-color: #90CAF9;
+	margin: 2px 0px;
+	border-radius: 14px;
+	cursor: pointer;
+}
+li.placeholder {background: rgb(255,240,120);}
+li.placeholder:before {
+  content: "Drop here";
+  color: rgb(225,210,90);
 }
