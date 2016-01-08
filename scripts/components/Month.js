@@ -36,6 +36,8 @@ var Month = React.createClass({
 		var week =['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',]
 		var startOfMonth = moment().month(this.props.month).year(this.props.year).startOf('month');
 		var endOfMonth = moment().month(this.props.month).year(this.props.year).endOf('month');
+		var endOfLastMonth = new Date(moment().month(this.props.month-1).year(this.props.year).endOf('month')).getDate();
+		//console.log("endOfLastMonth:",new Date(endOfLastMonth).getDate());
 		var startDay = startOfMonth.day()
 		var days = [];
 		var day = startOfMonth;
@@ -68,8 +70,9 @@ var Month = React.createClass({
 				<div>
 					{
 						days.map(function(day,i){
+													
 							return(
-								<Day day={day} data={events} count={days.length} index={i} key={i} startDay={startDay}></Day>
+								<Day day={day} lastMonthDays={j} last={endOfLastMonth} data={events} count={days.length} index={i} key={i} startDay={startDay}></Day>
 							)
 						})
 					}

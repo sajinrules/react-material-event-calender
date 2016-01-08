@@ -36,9 +36,10 @@ var Day = React.createClass({
 		var count = this.props.count;
 		var data = this.props.data || {};
 		var startDay = this.props.startDay;
-		var current = (this.props.day) ? new Date(this.props.day).getDate() : ""
+		//console.log("last:",this.props.lastMonthDays);
+		//console.log("index:",this.props.index);
 		var index = this.props.index;
-
+		var current = (this.props.day) ? new Date(this.props.day).getDate() : this.props.last-this.props.lastMonthDays+1+index;
 		var colStyle='';
 		var col= {float:'left',width: '13.6%',textAlign:'left',display: 'block',padding:'5px',borderBottom:'1px solid #ddd',borderLeft:'1px solid #ddd',overflow:'hidden'};
 		var colLast= {float:'left',width: '13.6%',textAlign:'left',display: 'block',padding:'5px',borderBottom:'1px solid #ddd',borderLeft:'1px solid #ddd',borderRight:'1px solid #ddd',overflow:'hidden'};
