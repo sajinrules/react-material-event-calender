@@ -151,10 +151,15 @@ var Daily = React.createClass({
 										showExpandableButton={true}>
 									</CardHeader>
 									<CardText expandable={true}>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-										Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-										Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-										Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+										<div style={{margin:'10px 0px',width:'50%'}}>
+											<div style={{width:'50%',float:'left'}} >Type :</div><div style={{float:'left',width:'50%'}}>{event.type}</div>
+											<div style={{width:'50%',float:'left'}} >Name :</div><div style={{float:'left',width:'50%'}}>{event.originalSource.point_of_sale.name}</div>
+											<div style={{width:'50%',float:'left'}} >Street Number :</div><div style={{float:'left',width:'50%'}}>{event.originalSource.point_of_sale.address.streetnumber}</div>
+											<div style={{width:'50%',float:'left'}} >Zip :</div><div style={{float:'left',width:'50%'}}>{event.originalSource.point_of_sale.address.postal}</div>
+											<div style={{width:'50%',float:'left'}} >City :</div><div style={{float:'left',width:'50%'}}>{event.originalSource.point_of_sale.address.city}</div>
+
+										</div>
+										
 									</CardText>
 								</Card>
 							</div>
