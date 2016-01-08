@@ -20,9 +20,10 @@ var Day = React.createClass({
 	},
 	drop : function(e) {
 		console.log("e",e);
-		console.log("e.currentTarget",e.currentTarget.children[3].children[0]);
+		console.log("this:",this);
+		console.log("e.currentTarget",e.currentTarget);
 		console.log("e.target:",e.target);
-		console.log("e.target.children:",e.target.children);
+		//console.log("e.target.children:",e.target.children);
 		var data = e.dataTransfer.getData("text");
 		if(e.target.children.length > 0)
 			e.target.children[0].appendChild(document.getElementById(data));
