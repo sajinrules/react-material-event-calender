@@ -74,7 +74,7 @@ var Day = React.createClass({
 				(events.length > 0) ? <div style={style}><Badge badgeContent={events.length} secondary={true}></Badge></div> : ""
 			}
 				<Leftnav ref="leftNav" docked={false} data={events}></Leftnav>
-				<div  style={{overflow:'auto',height:'120px',width:'100%'}} >
+				<div style={{overflow:'auto',height:'120px',width:'100%'}} >
 					<ul id="drop" style={{padding:'2px',margin:'0px '}}>{listItems}
 					</ul>
 				</div>
